@@ -1,0 +1,29 @@
+{
+    "name": "thunderphp/thunderphp",
+    "description": "ThunderPhp — a PHP 8.3 framework built from scratch to learn design patterns",
+    "type": "project",
+    "license": "MIT",
+    "require": {
+        "php": "^8.3"
+    },
+    "require-dev": {
+        "pestphp/pest": "^3.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Thunder\\": "src/Thunder/",
+            "App\\": "app/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/pest"
+    },
+    "config": {
+        "optimize-autoloader": true
+    }
+}
