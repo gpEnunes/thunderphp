@@ -8,7 +8,10 @@ use Thunder\Routing\RouterInterface;
 
 class Application implements ApplicationInterface
 {
-    public function __construct(private readonly RouterInterface $router){}
+    public function __construct(private readonly RouterInterface $router, string $routesPath){
+        $routes = require $routesPath;
+        $routes($this->router);
+    }
 
     public function handle(RequestInterface $request):ResponseInterface{
         $handler = $this->router->resolve($request->method(), $request->uri());
