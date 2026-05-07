@@ -4,7 +4,9 @@
     "type": "project",
     "license": "MIT",
     "require": {
-        "php": "^8.3"
+        "php": "^8.3",
+        "ext-pdo": "*",
+        "ext-pdo_pgsql": "*"
     },
     "require-dev": {
         "pestphp/pest": "^3.0"
