@@ -1,0 +1,5 @@
+CREATE TABLE jobs (
+  id SERIAL PRIMARY KEY,
+  payload TEXT NOT NULL,
+  created_at TIMESTAMP DEFAULT NOW()
+);
