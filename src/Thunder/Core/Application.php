@@ -20,9 +20,10 @@ class Application implements ApplicationInterface
     }
 
     public function handle(RequestInterface $request):ResponseInterface{
-        $handler = $this->router->resolve($request->method(), $request->uri());
-        [$controllerClass, $method] = $handler;
+        $resolved = $this->router->resolve($request->method(), $request->uri());
+        [$controllerClass, $method] = $resolved['handler'];
+        $params = $resolved['params'];
         $controller = $this->container->make($controllerClass);
-        return $controller->$method($request);
+        return $controller->$method($request, ...$params);
     }
 }
