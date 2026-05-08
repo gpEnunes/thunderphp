@@ -1,0 +1,9 @@
+#!/usr/bin/env php
+<?php
+use Thunder\Console\Kernel;
+use Thunder\Console\Commands\ListCommandsCommand;
+require_once "vendor/autoload.php";
+
+$kernel = new Kernel();
+$kernel->register(new ListCommandsCommand());
+$kernel->run($argv);
