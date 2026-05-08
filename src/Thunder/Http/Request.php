@@ -8,6 +8,7 @@ class Request implements RequestInterface
         private readonly string $method,
         private readonly string $uri,
         private readonly array $query = [],
+        private readonly array $headers = [],
         private readonly array $body = [],
     ) {}
 
@@ -27,6 +28,10 @@ class Request implements RequestInterface
         return $this->body[$key] ?? $default;
     }
 
+    public function header(string $key, string $default = ''):string
+    {
+        return $this->headers[$key] ?? $default;
+    }
     public function body():array{
         return $this->body;
     }
@@ -36,6 +41,7 @@ class Request implements RequestInterface
             method: $_SERVER['REQUEST_METHOD'],
             uri: $_SERVER['REQUEST_URI'],
             query: $_GET,
+            headers: getallheaders(),
             body: $_POST,
         );
     }
