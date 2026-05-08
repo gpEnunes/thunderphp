@@ -16,7 +16,10 @@
         "psr-4": {
             "Thunder\\": "src/Thunder/",
             "App\\": "app/"
-        }
+        },
+        "files": [
+            "src/Thunder/Support/helpers.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {
