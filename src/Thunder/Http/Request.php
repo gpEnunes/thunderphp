@@ -37,12 +37,16 @@ class Request implements RequestInterface
     }
 
     public static function fromGlobals():static{
+        $contentType = $_SERVER['CONTENT_TYPE'] ?? '';
+        $body = str_contains($contentType, 'application/json')
+            ? json_decode(file_get_contents('php://input'), true) ?? []
+            : $_POST;
         return new static(
             method: $_SERVER['REQUEST_METHOD'],
             uri: $_SERVER['REQUEST_URI'],
             query: $_GET,
             headers: getallheaders(),
-            body: $_POST,
+            body: $body,
         );
     }
 }
